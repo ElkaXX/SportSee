@@ -1,0 +1,19 @@
+@import "../../scss/variables";
+
+.home {
+  padding: 68px 90px 86px 107px;
+
+  &__greeting {
+    color: $true-black-color;
+    font-size: 48px;
+    font-weight: 500;
+  }
+
+  &__name {
+    color: $red-color;
+  }
+
+  &__description {
+    margin-top: 35px;
+  }
+}

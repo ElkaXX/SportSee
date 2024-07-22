@@ -1,3 +1,7 @@
+export type ApiResponse<T> = {
+  data: T;
+};
+
 export type UserMainData = {
   id: number;
   userInfos: UserInfo;

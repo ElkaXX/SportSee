@@ -1,1 +1,12 @@
 @import "../../scss/variables";
+
+.main-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    display: flex;
+    flex: 1;
+  }
+}
