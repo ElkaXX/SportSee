@@ -32,7 +32,7 @@ const Sidebar = () => {
         </ul>
       </nav>
 
-      {/* <div className="sidebar__copy">Copiryght, SportSee 2020</div> */}
+      { <div className="sidebar__copy">Copiryght, SportSee 2020</div> }
     </aside>
   );
 };

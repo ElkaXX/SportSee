@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   &__list {
     display: flex;
@@ -17,11 +18,14 @@
   }
 
   &__copy {
+    position: absolute;
     bottom: 59px;
     left: 42px;
     font-size: 12px;
     font-weight: 500;
     color: $white-color;
-    transform: rotate(-90deg);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    bottom: 59px;
   }
 }
