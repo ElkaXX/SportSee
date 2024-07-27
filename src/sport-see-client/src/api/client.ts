@@ -1,4 +1,8 @@
-import { ApiResponse, UserMainData } from "./types";
+import {
+  ApiResponse,
+  UserActivity,
+  UserMainData,
+} from "./types";
 
 class ApiClient {
   private readonly baseUrl: string;
@@ -7,8 +11,14 @@ class ApiClient {
     this.baseUrl = import.meta.env.VITE_BASE_URL;
   }
 
-  public async getUser(id: number): Promise<ApiResponse<UserMainData>> {
+  public async getUserAsync(id: number): Promise<ApiResponse<UserMainData>> {
     return await this.sendGetAsync(`user/${id}`);
+  }
+
+  public async getUserActivityAsync(
+    id: number
+  ): Promise<ApiResponse<UserActivity>> {
+    return await this.sendGetAsync(`user/${id}/activity`);
   }
 
   private async sendGetAsync<T>(route: string) {

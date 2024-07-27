@@ -1,21 +1,20 @@
 @import "../../scss/variables";
 
 .home {
-  padding: 68px 90px 86px 107px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
 
-  &__greeting {
+  &__link {
+    text-decoration: none;
     color: $true-black-color;
-    font-size: 48px;
-    font-weight: 500;
-  }
+    font-size: 20px;
+    text-decoration: none;
 
-  &__name {
-    color: $red-color;
-  }
-
-  &__description {
-    margin-top: 35px;
-    font-size: 18px;
-    font-weight: 400;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

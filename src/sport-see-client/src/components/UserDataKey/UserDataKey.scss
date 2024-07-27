@@ -1,0 +1,26 @@
+.user-data-key {
+  width: 258px;
+  height: 124px;
+  padding: 32px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+
+  &__img {
+    width: 60px;
+    height: 60px;
+  }
+
+  &__value {
+    color: #282d30;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__name {
+    color: #74798c;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
