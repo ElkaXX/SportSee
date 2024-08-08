@@ -1,4 +1,4 @@
-@import '../../scss/variables';
+@import "../../scss/variables";
 
 .dashboard {
   padding: 68px 90px 86px 107px;
@@ -31,6 +31,8 @@
   }
 
   &__charts-wrapper {
+    display: flex;
+    gap: 30px;
     min-width: 400px;
   }
 }

@@ -5,7 +5,7 @@ export type ApiResponse<T> = {
 export type UserMainData = {
   id: number;
   userInfos: UserInfo;
-  totalScore: number;
+  score: number;
   keyData: UserKeyData;
 };
 

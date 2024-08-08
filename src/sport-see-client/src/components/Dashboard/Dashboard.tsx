@@ -1,18 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { UserActivity, UserAverage, UserMainData } from '../../api/types';
-import ActivityChart from '../ActivityChart/ActivityChart';
-import client from '../../api/client';
-import './Dashboard.scss';
-import UserDataKeyList from '../UserDataKeyList/UserDataKeyList';
-import AverageChart from '../AverageChart/AverageChart';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import {
+  UserActivity,
+  UserAverage,
+  UserMainData,
+  UserPerformance,
+} from "../../api/types";
+import ActivityChart from "../ActivityChart/ActivityChart";
+import client from "../../api/client";
+import "./Dashboard.scss";
+import UserDataKeyList from "../UserDataKeyList/UserDataKeyList";
+import AverageChart from "../AverageChart/AverageChart";
+import PerformanceChart from "../PerformanceChart/PerformanceChart";
+import ScoreChart from "../ScoreChart/ScoreChart";
 
 const Dashboard = () => {
   const { userId } = useParams();
   const [userData, setUserData] = useState<UserMainData | null>(null);
   const [userActivity, setUserActivity] = useState<UserActivity | null>(null);
   const [userAverage, setUserAverage] = useState<UserAverage | null>(null);
+  const [userPerformance, setUserPerformance] =
+    useState<UserPerformance | null>(null);
 
   useEffect(() => {
     client
@@ -29,9 +38,14 @@ const Dashboard = () => {
       .getUserAverageAsync(+userId!)
       .then((response) => setUserAverage(response.data))
       .catch((error) => console.log(error));
+
+    client
+      .getUserPerformance(+userId!)
+      .then((response) => setUserPerformance(response.data))
+      .catch((error) => console.log(error));
   }, [userId]);
 
-  if (!userData || !userActivity || !userAverage) {
+  if (!userData || !userActivity || !userAverage || !userPerformance) {
     return <div>Loading</div>;
   }
 
@@ -51,6 +65,8 @@ const Dashboard = () => {
 
           <div className="dashboard__charts-wrapper">
             <AverageChart sessions={userAverage.sessions} />
+            <PerformanceChart performance={userPerformance} />
+            <ScoreChart score={userData.score} />
           </div>
         </div>
         <div className="dashboard__keys">

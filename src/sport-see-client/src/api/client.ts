@@ -1,4 +1,10 @@
-import { ApiResponse, UserActivity, UserAverage, UserMainData } from './types';
+import {
+  ApiResponse,
+  UserActivity,
+  UserAverage,
+  UserMainData,
+  UserPerformance,
+} from "./types";
 
 class ApiClient {
   private readonly baseUrl: string;
@@ -11,16 +17,26 @@ class ApiClient {
     return await this.sendGetAsync(`user/${id}`);
   }
 
-  public async getUserActivityAsync(id: number): Promise<ApiResponse<UserActivity>> {
+  public async getUserActivityAsync(
+    id: number
+  ): Promise<ApiResponse<UserActivity>> {
     return await this.sendGetAsync(`user/${id}/activity`);
   }
 
-  public async getUserAverageAsync(id: number): Promise<ApiResponse<UserAverage>> {
+  public async getUserAverageAsync(
+    id: number
+  ): Promise<ApiResponse<UserAverage>> {
     return await this.sendGetAsync(`user/${id}/average-sessions`);
   }
 
+  public async getUserPerformance(
+    id: number
+  ): Promise<ApiResponse<UserPerformance>> {
+    return await this.sendGetAsync(`user/${id}/performance`);
+  }
+
   private async sendGetAsync<T>(route: string) {
-    const response = await fetch(`${this.baseUrl}/${route}`, { method: 'GET' });
+    const response = await fetch(`${this.baseUrl}/${route}`, { method: "GET" });
 
     if (!response.ok) {
       throw new Error(`Failed request with status: ${response.statusText}`);
