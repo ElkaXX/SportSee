@@ -1,10 +1,12 @@
 import {
   PolarAngleAxis,
+  PolarGrid,
+  PolarRadiusAxis,
   Radar,
   RadarChart,
   ResponsiveContainer,
 } from "recharts";
-import { UserPerformance } from "../../api/types";
+import { PerformanceData, UserPerformance } from "../../api/types";
 import "./PerformanceChart.scss";
 
 type Props = {
@@ -18,8 +20,14 @@ const PerformanceChart = ({ performance }: Props) => {
     <div className="performance-chart">
       <ResponsiveContainer>
         <RadarChart data={performance.data}>
-          <PolarAngleAxis dataKey="kind" />
-          <Radar dataKey="value" />
+          <PolarGrid radialLines={false} />
+          <PolarAngleAxis
+            dataKey={({ kind: kindKey }: PerformanceData) =>
+              performance.kind[kindKey]
+            }
+          />
+
+          <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
         </RadarChart>
       </ResponsiveContainer>
     </div>
