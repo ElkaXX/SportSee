@@ -71,17 +71,28 @@ const ActivityChart = ({ sessions }: Props) => {
   );
 
   return (
-    <ResponsiveContainer width="100%" height={320}>
+    <ResponsiveContainer className="container" width="100%" height={320}>
       <BarChart
         data={data}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        margin={{ top: 24, right: 30, left: 32, bottom: 24 }}
         barGap={8}
       >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="day" />
-        <YAxis dataKey="calories" orientation="right" />
+        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+        <XAxis dataKey="day" tickMargin={16} tickLine={false} />
+        <YAxis
+          dataKey="calories"
+          orientation="right"
+          tickLine={false}
+          axisLine={false}
+          tickMargin={28}
+        />
         <Legend verticalAlign="top" content={renderLegend} />
-        <Tooltip content={<CustomTooltip />} />
+        <Tooltip
+          content={<CustomTooltip />}
+          offset={50}
+          allowEscapeViewBox={{ x: true }}
+          cursor={{ fill: "#C4C4C480" }}
+        />
 
         <Bar
           name="kg"

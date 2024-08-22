@@ -26,6 +26,8 @@
   }
 
   &__charts {
+    display: flex;
+    flex-direction: column;
     min-width: 800px;
     height: 613px;
   }
