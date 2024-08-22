@@ -36,3 +36,25 @@
     color: #74798c;
   }
 }
+
+.custom-tooltip {
+  width: 39px;
+  height: 63px;
+  background: #e60000;
+  color: #fff;
+  text-align: center;
+  font-size: 7px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 7px;
+}
+
+.tooltip-value {
+  margin: 0;
+}
+.tooltip-value:first-child {
+  margin-bottom: 25px;
+}

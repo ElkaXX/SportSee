@@ -1,7 +1,7 @@
 import {
   PolarAngleAxis,
   PolarGrid,
-  PolarRadiusAxis,
+  //PolarRadiusAxis,
   Radar,
   RadarChart,
   ResponsiveContainer,
@@ -16,6 +16,23 @@ type Props = {
 const PerformanceChart = ({ performance }: Props) => {
   console.log("Performance", performance);
 
+  const translateToFr = (key: string) => {
+    switch (key) {
+      case "cardio":
+        return "Cardio";
+      case "energy":
+        return "Energie";
+      case "endurance":
+        return "Endurance";
+      case "strength":
+        return "Force";
+      case "intensity":
+        return "Entensité";
+      case "speed":
+        return "Vitesse";
+    }
+  };
+
   return (
     <div className="performance-chart">
       <ResponsiveContainer>
@@ -23,7 +40,7 @@ const PerformanceChart = ({ performance }: Props) => {
           <PolarGrid radialLines={false} />
           <PolarAngleAxis
             dataKey={({ kind: kindKey }: PerformanceData) =>
-              performance.kind[kindKey]
+              translateToFr(performance.kind[kindKey])
             }
           />
 

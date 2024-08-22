@@ -14,6 +14,12 @@ import UserDataKeyList from "../UserDataKeyList/UserDataKeyList";
 import AverageChart from "../AverageChart/AverageChart";
 import PerformanceChart from "../PerformanceChart/PerformanceChart";
 import ScoreChart from "../ScoreChart/ScoreChart";
+import {
+  mockUserActivity,
+  mockUserAverageSessions,
+  mockUserMainData,
+  mockUserPerformance,
+} from "../../api/mock";
 
 const Dashboard = () => {
   const { userId } = useParams();
@@ -23,27 +29,41 @@ const Dashboard = () => {
   const [userPerformance, setUserPerformance] =
     useState<UserPerformance | null>(null);
 
+  const [isMock] = useState(true);
+
   useEffect(() => {
     client
       .getUserAsync(+userId!)
-      .then((response) => setUserData(response.data))
+      .then((response) => {
+        setUserData(isMock ? mockUserMainData(+userId!) : response.data);
+      })
       .catch((error) => console.log(error));
 
     client
       .getUserActivityAsync(+userId!)
-      .then((response) => setUserActivity(response.data))
+      .then((response) =>
+        setUserActivity(isMock ? mockUserActivity(+userId!) : response.data)
+      )
       .catch((error) => console.log(error));
 
     client
       .getUserAverageAsync(+userId!)
-      .then((response) => setUserAverage(response.data))
+      .then((response) =>
+        setUserAverage(
+          isMock ? mockUserAverageSessions(+userId!) : response.data
+        )
+      )
       .catch((error) => console.log(error));
 
     client
       .getUserPerformance(+userId!)
-      .then((response) => setUserPerformance(response.data))
+      .then((response) =>
+        setUserPerformance(
+          isMock ? mockUserPerformance(+userId!) : response.data
+        )
+      )
       .catch((error) => console.log(error));
-  }, [userId]);
+  }, [isMock, userId]);
 
   if (!userData || !userActivity || !userAverage || !userPerformance) {
     return <div>Loading</div>;
@@ -66,7 +86,7 @@ const Dashboard = () => {
           <div className="dashboard__charts-wrapper">
             <AverageChart sessions={userAverage.sessions} />
             <PerformanceChart performance={userPerformance} />
-            <ScoreChart score={userData.score} />
+            <ScoreChart score={userData.todayScore || userData.score} />
           </div>
         </div>
         <div className="dashboard__keys">

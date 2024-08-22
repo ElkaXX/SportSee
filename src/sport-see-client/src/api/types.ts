@@ -6,6 +6,7 @@ export type UserMainData = {
   id: number;
   userInfos: UserInfo;
   score: number;
+  todayScore?: number;
   keyData: UserKeyData;
 };
 

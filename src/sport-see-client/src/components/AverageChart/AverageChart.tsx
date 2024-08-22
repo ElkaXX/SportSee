@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-  Label,
+  //Label,
   Line,
   LineChart,
   ResponsiveContainer,
@@ -44,7 +44,7 @@ const AverageChart = ({ sessions }: Props) => {
 
   return (
     <div className="average-chart">
-      {/* <span className="">Durée moyenne des sessions</span> */}
+      <div className="average-chart__title">Durée moyenne des sessions</div>
       <ResponsiveContainer>
         <LineChart
           data={data}
@@ -58,11 +58,6 @@ const AverageChart = ({ sessions }: Props) => {
           ></XAxis>
           <Tooltip content={<CustomTooltip />} />
 
-          <Label
-            value="Durée moyenne des sessions"
-            offset={0}
-            position="insideTopLeft"
-          />
           <Line
             type="monotone"
             dataKey="sessionLength"

@@ -11,8 +11,6 @@ type Props = {
 };
 
 const ScoreChart = ({ score }: Props) => {
-  
-
   const scorePercent = score * 100;
 
   const data = [
@@ -21,10 +19,6 @@ const ScoreChart = ({ score }: Props) => {
 
       score: scorePercent,
       fill: "#ff0101",
-    },
-    {
-      score: 100,
-      fill: "#fff",
     },
   ];
 
@@ -36,13 +30,13 @@ const ScoreChart = ({ score }: Props) => {
           cx="50%"
           cy="50%"
           startAngle={90}
-          endAngle={450}
+          endAngle={90 + 360 * (data[0].score / 100)}
           innerRadius="70%"
-          outerRadius="90%"
+          outerRadius="80%"
           barSize={100}
           data={data}
         >
-          <RadialBar dataKey="score" />
+          <RadialBar dataKey="score" cornerRadius={10} />
 
           <Label
             value={`${data[0].score}%`}
@@ -50,9 +44,16 @@ const ScoreChart = ({ score }: Props) => {
             className="custom-label"
             fontSize="24"
             fill="#000"
-          />
+          ></Label>
         </RadialBarChart>
       </ResponsiveContainer>
+
+      {/* Positionnement absolu du texte au-dessus d'un graphique */}
+      <div className="score-chart-text">
+        <span className="score-percentage">{`${scorePercent}%`}</span>
+        <span>de votre</span>
+        <span>objectif</span>
+      </div>
     </div>
   );
 };
