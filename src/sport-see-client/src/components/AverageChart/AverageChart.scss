@@ -15,11 +15,12 @@
   &__title {
     position: absolute;
     top: 29px;
-    right: 34px;
+    left: 34px;
     color: #fff;
     font-size: 15px;
     font-weight: 500;
     opacity: 0.504;
     z-index: 1;
+    line-height: 1.3;
   }
 }

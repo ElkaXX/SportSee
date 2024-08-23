@@ -44,7 +44,9 @@ const AverageChart = ({ sessions }: Props) => {
 
   return (
     <div className="average-chart">
-      <div className="average-chart__title">Durée moyenne des sessions</div>
+      <div className="average-chart__title">
+        Durée moyenne des <br /> sessions
+      </div>
       <ResponsiveContainer>
         <LineChart
           data={data}
@@ -55,6 +57,7 @@ const AverageChart = ({ sessions }: Props) => {
             fontSize={12}
             tick={{ fill: "#FFF" }}
             axisLine={false} // Supprime une ligne d'axe
+            tickLine={false} // Supprime les tirets au-dessus des marques
           ></XAxis>
           <Tooltip content={<CustomTooltip />} />
 

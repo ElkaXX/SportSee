@@ -1,7 +1,6 @@
 import {
   PolarAngleAxis,
   PolarGrid,
-  //PolarRadiusAxis,
   Radar,
   RadarChart,
   ResponsiveContainer,
@@ -27,23 +26,36 @@ const PerformanceChart = ({ performance }: Props) => {
       case "strength":
         return "Force";
       case "intensity":
-        return "Entensité";
+        return "Intensité";
       case "speed":
         return "Vitesse";
     }
   };
 
+  // Nouvel ordre des touches pour afficher les étiquettes dans l'ordre souhaité
+  const customOrder = [
+    "intensity",
+    "speed",
+    "strength",
+    "endurance",
+    "energy",
+    "cardio",
+  ];
+
+  const orderedData = performance.data.map((dataPoint) => ({
+    ...dataPoint,
+    kind: customOrder[dataPoint.kind - 1], // Réarrangement dans un nouvel ordre
+  }));
+
   return (
     <div className="performance-chart">
       <ResponsiveContainer>
-        <RadarChart data={performance.data}>
+        <RadarChart data={orderedData}>
           <PolarGrid radialLines={false} />
           <PolarAngleAxis
-            dataKey={({ kind: kindKey }: PerformanceData) =>
-              translateToFr(performance.kind[kindKey])
-            }
+            dataKey={({ kind }: PerformanceData) => translateToFr(kind)}
+            tick={{ fill: "#FFF", fontSize: 12, fontWeight: 500, dx: 0, dy: 2 }}
           />
-
           <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
         </RadarChart>
       </ResponsiveContainer>
