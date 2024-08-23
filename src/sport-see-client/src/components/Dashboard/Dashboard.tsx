@@ -34,37 +34,45 @@ const Dashboard = () => {
   useEffect(() => {
     client
       .getUserAsync(+userId!)
-      .then((response) => {
-        setUserData(isMock ? mockUserMainData(+userId!) : response.data);
-      })
-      .catch((error) => console.log(error));
+      .then((response) => setUserData(response.data))
+      .catch((error) => {
+        if (isMock) {
+          setUserData(mockUserMainData(+userId!));
+        }
+
+        console.log(error);
+      });
 
     client
       .getUserActivityAsync(+userId!)
-      .then((response) =>
-        setUserActivity(isMock ? mockUserActivity(+userId!) : response.data)
-      )
-      .catch((error) => console.log(error));
+      .then((response) => setUserActivity(response.data))
+      .catch((error) => {
+        if (isMock) {
+          setUserActivity(mockUserActivity(+userId!));
+        }
+        console.log(error);
+      });
 
     client
       .getUserAverageAsync(+userId!)
-      .then((response) =>
-        setUserAverage(
-          isMock ? mockUserAverageSessions(+userId!) : response.data
-        )
-      )
-      .catch((error) => console.log(error));
+      .then((response) => setUserAverage(response.data))
+      .catch((error) => {
+        if (isMock) {
+          setUserAverage(mockUserAverageSessions(+userId!));
+        }
+        console.log(error);
+      });
 
     client
       .getUserPerformance(+userId!)
-      .then((response) =>
-        setUserPerformance(
-          isMock ? mockUserPerformance(+userId!) : response.data
-        )
-      )
-      .catch((error) => console.log(error));
+      .then((response) => setUserPerformance(response.data))
+      .catch((error) => {
+        if (isMock) {
+          setUserPerformance(mockUserPerformance(+userId!));
+        }
+        console.log(error);
+      });
   }, [isMock, userId]);
-
   if (!userData || !userActivity || !userAverage || !userPerformance) {
     return <div>Loading</div>;
   }
