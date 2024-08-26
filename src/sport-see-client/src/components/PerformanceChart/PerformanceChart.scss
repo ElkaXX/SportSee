@@ -2,8 +2,11 @@
 
 .performance-chart {
   position: relative;
-  width: 258px;
+  display: flex;
+  flex: 1;
   height: 263px;
+  width: 258px;
+
   border-radius: 5px;
   background: $gray-color;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.02);

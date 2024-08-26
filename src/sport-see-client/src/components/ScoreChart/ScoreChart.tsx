@@ -1,9 +1,4 @@
-import {
-  Label,
-  RadialBar,
-  RadialBarChart,
-  ResponsiveContainer,
-} from "recharts";
+import { RadialBar, RadialBarChart, ResponsiveContainer } from "recharts";
 import "./ScoreChart.scss";
 
 type Props = {
@@ -27,6 +22,7 @@ const ScoreChart = ({ score }: Props) => {
       <span className="score-title">Score</span>
       <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart
+          layout="radial"
           cx="50%"
           cy="50%"
           startAngle={90}
@@ -36,18 +32,10 @@ const ScoreChart = ({ score }: Props) => {
           barSize={100}
           data={data}
         >
+          <circle cx="50%" cy="50%" r="31%" fill="#fff" />
           <RadialBar dataKey="score" cornerRadius={10} />
-
-          <Label
-            value={`${data[0].score}%`}
-            position="center"
-            className="custom-label"
-            fontSize="24"
-            fill="#000"
-          ></Label>
         </RadialBarChart>
       </ResponsiveContainer>
-
       {/* Positionnement absolu du texte au-dessus d'un graphique */}
       <div className="score-chart-text">
         <span className="score-percentage">{`${scorePercent}%`}</span>

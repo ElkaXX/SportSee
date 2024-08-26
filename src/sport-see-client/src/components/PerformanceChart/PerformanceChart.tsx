@@ -42,19 +42,27 @@ const PerformanceChart = ({ performance }: Props) => {
     "cardio",
   ];
 
-  const orderedData = performance.data.map((dataPoint) => ({
-    ...dataPoint,
-    kind: customOrder[dataPoint.kind - 1], // Réarrangement dans un nouvel ordre
-  }));
+  const orderedData = customOrder.map((key) =>
+    performance.data.find((item) => performance.kind[item.kind] === key)
+  );
 
   return (
     <div className="performance-chart">
-      <ResponsiveContainer>
-        <RadarChart data={orderedData}>
+      <ResponsiveContainer width="100%">
+        <RadarChart cx="50%" cy="50%" outerRadius="70%" data={orderedData}>
           <PolarGrid radialLines={false} />
           <PolarAngleAxis
-            dataKey={({ kind }: PerformanceData) => translateToFr(kind)}
-            tick={{ fill: "#FFF", fontSize: 12, fontWeight: 500, dx: 0, dy: 2 }}
+            dataKey={({ kind: kindKey }: PerformanceData) =>
+              translateToFr(performance.kind[kindKey])
+            }
+            tick={{
+              fill: "#FFF",
+              fontSize: 12,
+              fontWeight: 500,
+              dy: 5,
+              dx: 0,
+            }}
+            tickSize={12}
           />
           <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
         </RadarChart>
