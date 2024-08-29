@@ -1,11 +1,12 @@
 @import "../../scss/variables";
 
 .dashboard {
-  padding: 68px 90px 86px 107px;
+  padding: 5%;
+  width: 100%;
 
   &__greeting {
     color: $true-black-color;
-    font-size: 48px;
+    font-size: 35px;
     font-weight: 500;
   }
 
@@ -14,27 +15,32 @@
   }
 
   &__description {
-    margin-top: 35px;
-    font-size: 18px;
+    margin-top: 15px;
+    font-size: 16px;
     font-weight: 400;
   }
 
   &__data {
-    margin-top: 77px;
+    margin-top: 30px;
     display: flex;
-    gap: 31px;
+    gap: 18px;
   }
 
   &__charts {
     display: flex;
     flex-direction: column;
-    min-width: 800px;
-    height: 613px;
+    justify-content: space-between;
+    flex: 1;
+    max-width: 800px;
+    height: 100%;
+    gap: 20px;
   }
 
   &__charts-wrapper {
     display: flex;
-    gap: 30px;
-    min-width: 400px;
+    justify-content: space-between;
+    height: 200px;
+    gap: 12px;
+    // min-width: 400px;
   }
 }

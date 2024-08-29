@@ -1,17 +1,15 @@
 @import "../../scss/variables";
 
 .header {
-  height: 91px;
-  padding-left: 21px;
-  padding-right: 91px;
+  padding: 6px 24px;
   display: flex;
   align-items: center;
   background-color: $black-color;
   color: #fff;
 
   &__logo {
-    height: 57px;
-    margin-right: 149px;
+    height: 41px;
+    margin-right: 106px;
   }
 
   &__navigation {
@@ -27,7 +25,7 @@
 
   &__link {
     color: $white-color;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 500;
     text-decoration: none;
 

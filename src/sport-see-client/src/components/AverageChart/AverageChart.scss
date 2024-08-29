@@ -1,11 +1,11 @@
 .average-chart {
   position: relative;
-  width: 258px;
-  height: 263px;
+  min-width: 120px;
+  max-width: 260px;
+  flex: 1;
   border-radius: 5px;
   background: #f00;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.02);
-  margin-top: 30px;
 
   &__tooltip {
     background-color: #fff;

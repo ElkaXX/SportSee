@@ -1,7 +1,7 @@
 @import "../../scss/variables";
 
 .sidebar {
-  width: 117px;
+  min-width: 83px;
   background-color: $black-color;
   display: flex;
   flex-direction: column;
@@ -14,18 +14,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
   }
 
   &__copy {
     position: absolute;
-    bottom: 59px;
-    left: 42px;
-    font-size: 12px;
+    bottom: 42px;
+    left: 40px;
+    font-size: 9px;
     font-weight: 500;
     color: $white-color;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    bottom: 59px;
+    bottom: 42px;
+  }
+
+  &__icon {
+    width: 46px;
+    height: 46px;
   }
 }

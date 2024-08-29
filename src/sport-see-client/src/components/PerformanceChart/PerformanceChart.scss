@@ -4,11 +4,13 @@
   position: relative;
   display: flex;
   flex: 1;
-  height: 263px;
-  width: 258px;
+  //height: 263px;
+
+  min-width: 120px;
+  max-width: 260px;
+  //width: 258px;
 
   border-radius: 5px;
   background: $gray-color;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.02);
-  margin-top: 30px;
 }

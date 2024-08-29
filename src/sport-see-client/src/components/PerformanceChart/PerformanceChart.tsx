@@ -48,7 +48,7 @@ const PerformanceChart = ({ performance }: Props) => {
 
   return (
     <div className="performance-chart">
-      <ResponsiveContainer width="100%">
+      <ResponsiveContainer width="100%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={orderedData}>
           <PolarGrid radialLines={false} />
           <PolarAngleAxis
@@ -57,12 +57,12 @@ const PerformanceChart = ({ performance }: Props) => {
             }
             tick={{
               fill: "#FFF",
-              fontSize: 12,
-              fontWeight: 500,
+              fontSize: 10,
+              fontWeight: 300,
               dy: 5,
               dx: 0,
             }}
-            tickSize={12}
+            tickSize={0}
           />
           <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
         </RadarChart>

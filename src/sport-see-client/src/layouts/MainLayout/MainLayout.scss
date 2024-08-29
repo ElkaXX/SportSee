@@ -8,5 +8,13 @@
   &__content {
     display: flex;
     flex: 1;
+    height: calc(100vh - 53px);
+  }
+
+  &__page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: auto;
   }
 }

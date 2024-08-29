@@ -27,20 +27,20 @@ const ScoreChart = ({ score }: Props) => {
           cy="50%"
           startAngle={90}
           endAngle={90 + 360 * (data[0].score / 100)}
-          innerRadius="70%"
-          outerRadius="80%"
+          innerRadius="60%"
+          outerRadius="68%"
           barSize={100}
           data={data}
         >
-          <circle cx="50%" cy="50%" r="31%" fill="#fff" />
+          <circle cx="50%" cy="50%" r="26%" fill="#fff" />
           <RadialBar dataKey="score" cornerRadius={10} />
         </RadialBarChart>
       </ResponsiveContainer>
       {/* Positionnement absolu du texte au-dessus d'un graphique */}
       <div className="score-chart-text">
         <span className="score-percentage">{`${scorePercent}%`}</span>
-        <span>de votre</span>
-        <span>objectif</span>
+        <span className="score-label">de votre</span>
+        <span className="score-label">objectif</span>
       </div>
     </div>
   );

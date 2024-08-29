@@ -13,26 +13,26 @@ const Sidebar = () => {
             <img
               src={activityIcon}
               alt="activity icon"
-              className="sidebar__img"
+              className="sidebar__icon"
             />
           </li>
           <li className="sidebar__item">
-            <img src={swimIcon} alt="swim icon" className="sidebar__img" />
+            <img className="sidebar__icon" src={swimIcon} alt="swim icon" />
           </li>
           <li className="sidebar__item">
-            <img src={bikeIcon} alt="bike icon" className="sidebar__img" />
+            <img className="sidebar__icon" src={bikeIcon} alt="bike icon" />
           </li>
           <li className="sidebar__item">
             <img
               src={barbellIcon}
               alt="barbell icon"
-              className="sidebar__img"
+              className="sidebar__icon"
             />
           </li>
         </ul>
       </nav>
 
-      { <div className="sidebar__copy">Copiryght, SportSee 2020</div> }
+      {<div className="sidebar__copy">Copiryght, SportSee 2020</div>}
     </aside>
   );
 };

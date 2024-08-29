@@ -89,7 +89,7 @@ const ActivityChart = ({ sessions }: Props) => {
         <Legend verticalAlign="top" content={renderLegend} />
         <Tooltip
           content={<CustomTooltip />}
-          offset={50}
+          offset={40}
           allowEscapeViewBox={{ x: true }}
           cursor={{ fill: "#C4C4C480" }}
         />
