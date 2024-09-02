@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   background-color: $black-color;
+  mix-blend-mode: color;
   color: #fff;
 
   &__logo {
