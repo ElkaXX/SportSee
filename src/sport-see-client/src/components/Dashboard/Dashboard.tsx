@@ -94,7 +94,8 @@ const Dashboard = () => {
           <div className="dashboard__charts-wrapper">
             <AverageChart sessions={userAverage.sessions} />
             <PerformanceChart performance={userPerformance} />
-            <ScoreChart score={userData.todayScore || userData.score} />
+            {/* Transmet une valeur au composant ScoreChart. (userData.todayScore ou userData.score) */}
+            <ScoreChart score={userData.todayScore || userData.score} />{" "}
           </div>
         </div>
         <div className="dashboard__keys">
