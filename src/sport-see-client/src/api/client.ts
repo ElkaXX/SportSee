@@ -14,28 +14,22 @@ class ApiClient {
   }
 
   // Méthode pour obtenir des informations de base sur l'utilisateur
-  public async getUserAsync(id: number): Promise<ApiResponse<UserMainData>> {
+  public async getUserAsync(id: number): Promise<UserMainData> {
     return await this.sendGetAsync(`user/${id}`);
   }
 
   // Méthode d'obtention des données d'activité des utilisateurs
-  public async getUserActivityAsync(
-    id: number
-  ): Promise<ApiResponse<UserActivity>> {
+  public async getUserActivityAsync(id: number): Promise<UserActivity> {
     return await this.sendGetAsync(`user/${id}/activity`);
   }
 
   // Méthode pour obtenir la durée moyenne des sessions
-  public async getUserAverageAsync(
-    id: number
-  ): Promise<ApiResponse<UserAverage>> {
+  public async getUserAverageAsync(id: number): Promise<UserAverage> {
     return await this.sendGetAsync(`user/${id}/average-sessions`);
   }
 
   // Méthode pour obtenir des mesures de performances
-  public async getUserPerformance(
-    id: number
-  ): Promise<ApiResponse<UserPerformance>> {
+  public async getUserPerformance(id: number): Promise<UserPerformance> {
     return await this.sendGetAsync(`user/${id}/performance`);
   }
 
@@ -47,7 +41,9 @@ class ApiClient {
       throw new Error(`Failed request with status: ${response.statusText}`);
     }
 
-    return response.json() as Promise<T>;
+    const responseData = (await response.json()) as ApiResponse<T>;
+
+    return responseData.data;
   }
 }
 

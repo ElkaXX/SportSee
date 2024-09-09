@@ -29,52 +29,51 @@ const Dashboard = () => {
   const [userPerformance, setUserPerformance] =
     useState<UserPerformance | null>(null);
 
-  const [isMock] = useState(true);
+  const [isMock] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null); // Statut des erreurs
 
   useEffect(() => {
-    client
-      .getUserAsync(+userId!)
-      .then((response) => setUserData(response.data))
-      .catch((error) => {
+    setIsLoading(true);
+    setError(null); // Réinitialisez l'erreur avant de démarrer une nouvelle requête
+
+    // Requêtes à toutes les API simultanément
+    Promise.all([
+      client.getUserAsync(+userId!).then(setUserData),
+      client.getUserActivityAsync(+userId!).then(setUserActivity),
+      client.getUserAverageAsync(+userId!).then(setUserAverage),
+      client.getUserPerformance(+userId!).then(setUserPerformance),
+    ])
+      .then(() => {
+        setIsLoading(false); // Arrêt de l'indicateur de chargement
+      })
+      .catch((error: any) => {
+        console.error("Erreur de chargement des données:", error);
         if (isMock) {
+          // Si des données "mock" sont utilisées
           setUserData(mockUserMainData(+userId!));
-        }
-
-        console.log(error);
-      });
-
-    client
-      .getUserActivityAsync(+userId!)
-      .then((response) => setUserActivity(response.data))
-      .catch((error) => {
-        if (isMock) {
           setUserActivity(mockUserActivity(+userId!));
-        }
-        console.log(error);
-      });
-
-    client
-      .getUserAverageAsync(+userId!)
-      .then((response) => setUserAverage(response.data))
-      .catch((error) => {
-        if (isMock) {
           setUserAverage(mockUserAverageSessions(+userId!));
-        }
-        console.log(error);
-      });
-
-    client
-      .getUserPerformance(+userId!)
-      .then((response) => setUserPerformance(response.data))
-      .catch((error) => {
-        if (isMock) {
           setUserPerformance(mockUserPerformance(+userId!));
+        } else {
+          setError(
+            "Erreur de chargement des données. Veuillez réessayer plus tard."
+          );
         }
-        console.log(error);
+        setIsLoading(false);
       });
   }, [isMock, userId]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="error-message">{error}</div>;
+  }
+
   if (!userData || !userActivity || !userAverage || !userPerformance) {
-    return <div>Loading</div>;
+    return <div>Loading...</div>;
   }
 
   return (

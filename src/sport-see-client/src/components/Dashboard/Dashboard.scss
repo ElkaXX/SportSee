@@ -43,3 +43,10 @@
     gap: 12px;
   }
 }
+.error-message {
+  color: $red-color;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 20px 0;
+  text-align: center;
+}
